@@ -3,10 +3,10 @@
 
 # # Readability over compactness
 # 
-# In Python community, including the official documentation and examples, there is a tendency to use most compact and esoteric syntax possible. This does not serve anyone. I, as a hiring manager, do not want to hire people who pride themselves in writing an unreadable code. This tendency also shows immaturity, the orgin of that tendency can be two-fold: 
+# In Python community, including the official documentation and examples, there is **a tendency to use most compact and esoteric syntax possible, that does not serve anyone**. I, as a hiring manager, do not want to hire people who pride themselves in writing an unreadable code. This tendency also shows immaturity, the orgin of that tendency can be two-fold: 
 # 
 # - the original authors were loner-hacker types that only cared to write a short scripts that served themselves
-# - the original authors were academics that never worked for an extended amount of time in large teams
+# - the original authors were academics that never worked for an extended amount of time in a large team
 # 
 # Maintaining an unreadable code is a nightmare and often it is easier to re-write it from scratch.
 # 
@@ -14,7 +14,7 @@
 # 
 # The classes and functions should have description and examples of how should they be used.
 
-# # Python Naming Conventions:
+# # Python naming conventions:
 # 
 # - **Modules** should have short, **all-lowercase** names, underscores can be used. 
 # - **Packages** should have short, **all-lowercase** names, underscores are discouraged.
