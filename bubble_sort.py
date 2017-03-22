@@ -12,6 +12,7 @@ perform_tests = True
 
 def bubble_sort(the_list: list, verbose: int=0):
     """
+    a
     This function changes the provided list.
     The list can contain integers, decimal numbers, strings, etc.
     The list is sorted in ascending order (first to last).
