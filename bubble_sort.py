@@ -33,9 +33,9 @@ def bubble_sort(the_list: list, verbose: int=0):
                 print("    comparing if is", the_list[i], "bigger than", the_list[i+1])
             if the_list[i] > the_list[i+1]:
                 # swap
-                temp = the_list[i] # temp placehoder for the value to be moved
-                the_list[i] = the_list[i+1]
-                the_list[i+1] = temp
+                temp = the_list[i+1] # temp placehoder for the value to be moved
+                the_list[i+1] = the_list[i] # bubble up
+                the_list[i] = temp # bubble down
     if verbose > 0:
         print("*** finished", len(the_list), "element list in ", iteration, "iterations")
 
