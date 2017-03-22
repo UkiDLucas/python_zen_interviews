@@ -6,5 +6,11 @@
 
 # In[ ]:
 
+# see http://nbconvert.readthedocs.io/en/latest/usage.html
+get_ipython().system('jupyter nbconvert --to markdown README.ipynb')
+
+
+# In[ ]:
+
 
 
