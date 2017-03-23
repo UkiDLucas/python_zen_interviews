@@ -16,8 +16,9 @@
 
 # # Python naming conventions:
 # 
-# - **Modules** should have short, **all-lowercase** names, underscores can be used. 
-# - **Packages** should have short, **all-lowercase** names, underscores are discouraged.
+# 
+# - **Packages** (directory name) should have short, **all-lowercase** names, underscores are discouraged.
+# - **Modules** (source file name) should have short, **all-lowercase** names, underscores can be used. 
 # - **Classes** should normally use the **CapWords** convention.
 # - **Constants** should be written in **UPPER_CASE_WITH_UNDERSCORES**
 # - **Variables** should be written in **lower_case_with_underscores**
