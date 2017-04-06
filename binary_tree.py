@@ -33,8 +33,34 @@ class Node:
                 # if right child does not exist, create new node
                 self.rightChild = Node(data)
                 return True
+    
+    def find(self, data):
+        if self.value == data:
+            return True
+        elif self.value > data:
+            if self.leftChild
+                return self.leftChild.find(data) # recursive
+            else: 
+                False # not in the left branch
+        else:
+            # data must be BIGGER than stored value
+            if self.rightChild
+                return self.rightChild.find(data) # recursive
+            else: 
+                False # not in the right branch
+            
+
+
+        
+        
             
             
+
+        
+
+
+# In[ ]:
+
 class Tree:
     def __init__(self):
         # start empty
@@ -49,4 +75,9 @@ class Tree:
             self.root = Node(data)
             return True
         
+    def find(self, data):
+        if self.root:
+            return self.root.find(data) # recursive call
+        else:
+            return False # did not find node
 

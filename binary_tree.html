@@ -11808,9 +11808,43 @@ div#notebook {
                 <span class="c1"># if right child does not exist, create new node</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">rightChild</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
                 <span class="k">return</span> <span class="kc">True</span>
+    
+    <span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">==</span> <span class="n">data</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">&gt;</span> <span class="n">data</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">leftChild</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">leftChild</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1"># recursive</span>
+            <span class="k">else</span><span class="p">:</span> 
+                <span class="kc">False</span> <span class="c1"># not in the left branch</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># data must be BIGGER than stored value</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rightChild</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rightChild</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1"># recursive</span>
+            <span class="k">else</span><span class="p">:</span> 
+                <span class="kc">False</span> <span class="c1"># not in the right branch</span>
+            
+
+
+        
+        
             
             
-<span class="k">class</span> <span class="nc">Tree</span><span class="p">:</span>
+
+        
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Tree</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="c1"># start empty</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="kc">None</span>
@@ -11824,6 +11858,11 @@ div#notebook {
             <span class="bp">self</span><span class="o">.</span><span class="n">root</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
             <span class="k">return</span> <span class="kc">True</span>
         
+    <span class="k">def</span> <span class="nf">find</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1"># recursive call</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span> <span class="c1"># did not find node</span>
 </pre></div>
 
 </div>
