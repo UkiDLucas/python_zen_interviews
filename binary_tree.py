@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[12]:
+# In[1]:
 
 class Node:
     def __init__(self, value):
@@ -51,7 +51,7 @@ class Node:
             
 
 
-# In[13]:
+# In[2]:
 
 class Tree:
     def __init__(self):
@@ -74,7 +74,7 @@ class Tree:
             return False # did not find node
 
 
-# In[14]:
+# In[3]:
 
 # TEST
 
@@ -82,39 +82,39 @@ tree = Tree()
 tree.insert(5)
 
 
-# In[15]:
+# In[4]:
 
-tree.find(5)
-
-
-# In[16]:
-
-tree.find(6)
+assert(True == tree.find(5))
 
 
-# In[17]:
+# In[5]:
 
-tree.insert(6)
-
-
-# In[18]:
-
-tree.find(6)
+assert(False == tree.find(6) )
 
 
-# In[19]:
+# In[6]:
 
-tree.find(4)
-
-
-# In[20]:
-
-tree.insert(4)
+assert(True == tree.insert(6))
 
 
-# In[21]:
+# In[7]:
 
-tree.find(4)
+assert(True == tree.find(6))
+
+
+# In[8]:
+
+assert(False == tree.find(4))
+
+
+# In[9]:
+
+assert(True == tree.insert(4))
+
+
+# In[10]:
+
+assert(True == tree.find(4))
 
 
 # In[ ]:
