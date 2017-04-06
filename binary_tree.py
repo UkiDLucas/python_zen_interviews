@@ -1,15 +1,15 @@
 
 # coding: utf-8
 
-# In[ ]:
+# In[12]:
 
 class Node:
     def __init__(self, value):
         # payload this node will carry
         self.value = value
         # binary children nodes (left and right)
-        self.left = None
-        self.right = None
+        self.leftChild = None
+        self.rightChild = None
         
     def insert(self, data):
         if self.value == data:
@@ -20,7 +20,7 @@ class Node:
             if self.leftChild:
                 # if left child node exists, insert into it
                 return self.leftChild.insert(data) # recursive call
-            else
+            else:
                 # if left child does not exist, create new node
                 self.leftChild = Node(data)
                 return True
@@ -29,7 +29,7 @@ class Node:
             if self.rightChild:
                 # if right child node exists, insert into it
                 return self.rightChild.insert(data) # recursive call
-            else
+            else:
                 # if right child does not exist, create new node
                 self.rightChild = Node(data)
                 return True
@@ -38,28 +38,20 @@ class Node:
         if self.value == data:
             return True
         elif self.value > data:
-            if self.leftChild
+            if self.leftChild:
                 return self.leftChild.find(data) # recursive
             else: 
-                False # not in the left branch
+                return False # not in the left branch
         else:
             # data must be BIGGER than stored value
-            if self.rightChild
+            if self.rightChild:
                 return self.rightChild.find(data) # recursive
             else: 
-                False # not in the right branch
+                return False # not in the right branch
             
 
 
-        
-        
-            
-            
-
-        
-
-
-# In[ ]:
+# In[13]:
 
 class Tree:
     def __init__(self):
@@ -80,4 +72,52 @@ class Tree:
             return self.root.find(data) # recursive call
         else:
             return False # did not find node
+
+
+# In[14]:
+
+# TEST
+
+tree = Tree()
+tree.insert(5)
+
+
+# In[15]:
+
+tree.find(5)
+
+
+# In[16]:
+
+tree.find(6)
+
+
+# In[17]:
+
+tree.insert(6)
+
+
+# In[18]:
+
+tree.find(6)
+
+
+# In[19]:
+
+tree.find(4)
+
+
+# In[20]:
+
+tree.insert(4)
+
+
+# In[21]:
+
+tree.find(4)
+
+
+# In[ ]:
+
+
 
