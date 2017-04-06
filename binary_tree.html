@@ -11791,13 +11791,22 @@ div#notebook {
             <span class="c1"># we are not allowing to insert same data twice</span>
             <span class="k">return</span> <span class="kc">False</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">&gt;</span> <span class="n">data</span><span class="p">:</span>
-            <span class="c1"># if the existing data bigger than new data</span>
+            <span class="c1"># if the incoming data is SMALLER than the node&#39;s value</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">leftChild</span><span class="p">:</span>
                 <span class="c1"># if left child node exists, insert into it</span>
-                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">leftChild</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">leftChild</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1"># recursive call</span>
             <span class="k">else</span>
                 <span class="c1"># if left child does not exist, create new node</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">leftChild</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+                <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># if the incoming data is BIGGER than the node&#39;s value</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">rightChild</span><span class="p">:</span>
+                <span class="c1"># if right child node exists, insert into it</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">rightChild</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="c1"># recursive call</span>
+            <span class="k">else</span>
+                <span class="c1"># if right child does not exist, create new node</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">rightChild</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
                 <span class="k">return</span> <span class="kc">True</span>
             
             

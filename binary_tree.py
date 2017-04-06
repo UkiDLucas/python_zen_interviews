@@ -16,13 +16,22 @@ class Node:
             # we are not allowing to insert same data twice
             return False
         elif self.value > data:
-            # if the existing data bigger than new data
+            # if the incoming data is SMALLER than the node's value
             if self.leftChild:
                 # if left child node exists, insert into it
-                return self.leftChild.insert(data)
+                return self.leftChild.insert(data) # recursive call
             else
                 # if left child does not exist, create new node
                 self.leftChild = Node(data)
+                return True
+        else:
+            # if the incoming data is BIGGER than the node's value
+            if self.rightChild:
+                # if right child node exists, insert into it
+                return self.rightChild.insert(data) # recursive call
+            else
+                # if right child does not exist, create new node
+                self.rightChild = Node(data)
                 return True
             
             
