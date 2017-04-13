@@ -14,7 +14,7 @@
 # 
 # The classes and functions should have description and examples of how should they be used.
 
-# # Python naming conventions:
+# # Python naming conventions (PEP8 compliant)
 # 
 # 
 # - **Packages** (directory name) should have short, **all-lowercase** names, underscores are discouraged.
