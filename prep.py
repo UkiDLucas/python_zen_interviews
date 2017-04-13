@@ -1,6 +1,10 @@
 
 # coding: utf-8
 
+# # topcoder: Importance of Algorithims
+# 
+# https://www.topcoder.com/community/data-science/data-science-tutorials/the-importance-of-algorithms/
+
 # # Coding
 # 
 # You should know at least one programming language really well (preferably C++,  Java or Python). You will be expected to write some code in at least some of your interviews. You will be expected to know a fair amount of detail about your preferred programming language and will be asked to do some coding on the whiteboard.
