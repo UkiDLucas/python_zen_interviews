@@ -1,27 +1,91 @@
 
 # coding: utf-8
 
-# # topcoder: Importance of Algorithims
+# # TopCoder: Importance of Algorithims
 # 
 # https://www.topcoder.com/community/data-science/data-science-tutorials/the-importance-of-algorithms/
 # 
 # "Algorithms are optimized ways for accomplishing a given, well-defined task."
 
-# # Big-O notations 
+# # Big-O notation
 # 
 # Big-O notations is also known as "the run time characteristic of an algorithm",as it describes the **runtime relative to the size of the input**.
 # 
 # For input size of N items it provides the worst-case runtime.
 # 
+# A computer can easily complete 100 operations per second.
+# 
+# 
+# references:
+# - https://rob-bell.net/2009/06/a-beginners-guide-to-big-o-notation/
+
+# In[7]:
+
+N = 1000 # input size
+C = 1 # execution time per operation 1 second
+
+
 # Below is the estimated completion time for 1 second (C = 1s) operation algorithm, where input items N = 100
 # 
 # - $O(Log(N))$	10-7 seconds 
+# - $O(1)$ 1.001 second
 # - $O(N)$	10-6 seconds 
 # - $O(N*Log(N))$	10-5 seconds 
 # - $O(N^2)$	10-4 seconds, i.e. runtime is proportional to the number of items squared
 # - $O(N^6)$ 3 minutes 
-# - $O(2^N)$	1014 years 
-# - $O(N!)$	10142 years 
+# - $O(2^N)$	1,014 years 
+# - $O(N!)$	10,142 years 
+
+# In[1]:
+
+class TimeIt():
+    from datetime import datetime
+    def __enter__(self):
+        self.start = self.datetime.now()
+    def __exit__(self, *args, **kwargs):
+        print('runtime: {}'.format(self.datetime.now() - self.start))
+
+
+# In[3]:
+
+import numpy
+import timeit
+
+sample_set = numpy.random.randint(low=0, high=N, size=N, dtype='l')
+
+print(len(sample_set))
+
+with TimeIt():
+    print("sample_set:\n", sample_set[0:10])
+with TimeIt():
+    print("sorted sample_set:\n", sorted(sample_set)[0:10])
+with TimeIt():
+    print("sample_set:\n", sample_set[0:10])
+with TimeIt():
+    print("sorted sample_set:\n", sorted(sample_set)[0:10])
+
+
+# ## $O(1)$ 
+# 
+# executes the same amount of time regardless on input size, also noted a C.
+
+# In[18]:
+
+import time
+
+def return_first_element(listing: list):
+    time.sleep(C)
+    return listing[0]
+
+with TimeIt():
+    print (return_first_element(listing = sample_set) )
+
+for i in range(0, N, 100):  
+    with TimeIt():
+        print (i, return_first_element(listing = sample_set[0:i+1]) )
+
+
+# 
 
 # # Coding
 # 

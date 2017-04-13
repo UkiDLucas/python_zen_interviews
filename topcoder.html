@@ -11778,7 +11778,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="topcoder:-Importance-of-Algorithims">topcoder: Importance of Algorithims<a class="anchor-link" href="#topcoder:-Importance-of-Algorithims">&#182;</a></h1><p><a href="https://www.topcoder.com/community/data-science/data-science-tutorials/the-importance-of-algorithms/">https://www.topcoder.com/community/data-science/data-science-tutorials/the-importance-of-algorithms/</a></p>
+<h1 id="TopCoder:-Importance-of-Algorithims">TopCoder: Importance of Algorithims<a class="anchor-link" href="#TopCoder:-Importance-of-Algorithims">&#182;</a></h1><p><a href="https://www.topcoder.com/community/data-science/data-science-tutorials/the-importance-of-algorithms/">https://www.topcoder.com/community/data-science/data-science-tutorials/the-importance-of-algorithms/</a></p>
 <p>"Algorithms are optimized ways for accomplishing a given, well-defined task."</p>
 
 </div>
@@ -11789,18 +11789,200 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Big-O-notations">Big-O notations<a class="anchor-link" href="#Big-O-notations">&#182;</a></h1><p>Big-O notations is also known as "the run time characteristic of an algorithm",as it describes the <strong>runtime relative to the size of the input</strong>.</p>
+<h1 id="Big-O-notation">Big-O notation<a class="anchor-link" href="#Big-O-notation">&#182;</a></h1><p>Big-O notations is also known as "the run time characteristic of an algorithm",as it describes the <strong>runtime relative to the size of the input</strong>.</p>
 <p>For input size of N items it provides the worst-case runtime.</p>
+<p>A computer can easily complete 100 operations per second.</p>
+<p>references:</p>
+<ul>
+<li><a href="https://rob-bell.net/2009/06/a-beginners-guide-to-big-o-notation/">https://rob-bell.net/2009/06/a-beginners-guide-to-big-o-notation/</a></li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># input size</span>
+<span class="n">C</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># execution time per operation 1 second</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <p>Below is the estimated completion time for 1 second (C = 1s) operation algorithm, where input items N = 100</p>
 <ul>
 <li>$O(Log(N))$    10-7 seconds </li>
+<li>$O(1)$ 1.001 second</li>
 <li>$O(N)$    10-6 seconds </li>
 <li>$O(N*Log(N))$    10-5 seconds </li>
 <li>$O(N^2)$    10-4 seconds, i.e. runtime is proportional to the number of items squared</li>
 <li>$O(N^6)$ 3 minutes </li>
-<li>$O(2^N)$    1014 years </li>
-<li>$O(N!)$    10142 years </li>
+<li>$O(2^N)$    1,014 years </li>
+<li>$O(N!)$    10,142 years </li>
 </ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">TimeIt</span><span class="p">():</span>
+    <span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+    <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;runtime: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">timeit</span>
+
+<span class="n">sample_set</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;l&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sample_set</span><span class="p">))</span>
+
+<span class="k">with</span> <span class="n">TimeIt</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sample_set:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">sample_set</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">])</span>
+<span class="k">with</span> <span class="n">TimeIt</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sorted sample_set:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">sample_set</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">])</span>
+<span class="k">with</span> <span class="n">TimeIt</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sample_set:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">sample_set</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">])</span>
+<span class="k">with</span> <span class="n">TimeIt</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sorted sample_set:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">sample_set</span><span class="p">)[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1000
+sample_set:
+ [802 764 134 376  58 463 683 661  61 758]
+runtime: 0:00:00.000782
+sorted sample_set:
+ [0, 1, 2, 2, 5, 6, 6, 7, 7, 7]
+runtime: 0:00:00.000871
+sample_set:
+ [802 764 134 376  58 463 683 661  61 758]
+runtime: 0:00:00.000568
+sorted sample_set:
+ [0, 1, 2, 2, 5, 6, 6, 7, 7, 7]
+runtime: 0:00:00.000746
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="$O(1)$">$O(1)$<a class="anchor-link" href="#$O(1)$">&#182;</a></h2><p>executes the same amount of time regardless on input size, also noted a C.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">return_first_element</span><span class="p">(</span><span class="n">listing</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">listing</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">with</span> <span class="n">TimeIt</span><span class="p">():</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">return_first_element</span><span class="p">(</span><span class="n">listing</span> <span class="o">=</span> <span class="n">sample_set</span><span class="p">)</span> <span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span>  
+    <span class="k">with</span> <span class="n">TimeIt</span><span class="p">():</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">return_first_element</span><span class="p">(</span><span class="n">listing</span> <span class="o">=</span> <span class="n">sample_set</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>802
+runtime: 0:00:01.005087
+0 802
+runtime: 0:00:01.003760
+100 802
+runtime: 0:00:01.003790
+200 802
+runtime: 0:00:01.005137
+300 802
+runtime: 0:00:01.003938
+400 802
+runtime: 0:00:01.004196
+500 802
+runtime: 0:00:01.004058
+600 802
+runtime: 0:00:01.005442
+700 802
+runtime: 0:00:01.003766
+800 802
+runtime: 0:00:01.000245
+900 802
+runtime: 0:00:01.004202
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 
 </div>
 </div>
