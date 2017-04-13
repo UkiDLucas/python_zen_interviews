@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>prep</title><script src="https://unpkg.com/jupyter-js-widgets@2.0.*/dist/embed.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>lists</title><script src="https://unpkg.com/jupyter-js-widgets@2.0.*/dist/embed.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11773,99 +11773,1016 @@ div#notebook {
   <div tabindex="-1" id="notebook" class="border-box-sizing">
     <div class="container" id="notebook-container">
 
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A0</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">((</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">,</span><span class="s1">&#39;d&#39;</span><span class="p">,</span><span class="s1">&#39;e&#39;</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">A0</span><span class="p">))</span> <span class="c1"># same as .keys</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">A0</span><span class="o">.</span><span class="n">values</span><span class="p">()</span> <span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{&#39;e&#39;: 5, &#39;d&#39;: 4, &#39;b&#39;: 2, &#39;a&#39;: 1, &#39;c&#39;: 3}
+[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;]
+[1, 2, 3, 4, 5]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A1</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A1</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>range(0, 10)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A2</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">A1</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">A0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A2</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A3</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">A0</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">A0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A3</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[1, 2, 3, 4, 5]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A4</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">A1</span> <span class="k">if</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">A3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A4</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[1, 2, 3, 4, 5]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A5</span> <span class="o">=</span> <span class="p">{</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">A1</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A5</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">A6</span> <span class="o">=</span> <span class="p">[[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="o">*</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">A1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A6</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[[0, 0], [1, 1], [2, 4], [3, 9], [4, 16], [5, 25], [6, 36], [7, 49], [8, 64], [9, 81]]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">l</span><span class="o">=</span><span class="p">[]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="c1"># range has zero notation</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="c1"># range has zero notation</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">i</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> 
+
+<span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[]
+range(0, 2)
+[0, 1]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">,[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[3, 2, 1]
+range(0, 3)
+[3, 2, 1, 0, 1, 4]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[0, 1]
+range(0, 3)
+[0, 1, 0, 1, 4]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">l_mem</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="n">l</span> <span class="o">=</span> <span class="n">l_mem</span>           <span class="c1"># the first call</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">i</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>            <span class="c1"># [0, 1]</span>
+
+<span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>         <span class="c1"># the second call</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">i</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>            <span class="c1"># [3, 2, 1, 0, 1, 4]</span>
+
+<span class="n">l</span> <span class="o">=</span> <span class="n">l_mem</span>           <span class="c1"># the third call</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="o">*</span><span class="n">i</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>            <span class="c1"># [0, 1, 0, 1, 4]</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[0, 1]
+[3, 2, 1, 0, 1, 4]
+[0, 1, 0, 1, 4]
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Coding">Coding<a class="anchor-link" href="#Coding">&#182;</a></h1><p>You should know at least one programming language really well (preferably C++,  Java or Python). You will be expected to write some code in at least some of your interviews. You will be expected to know a fair amount of detail about your preferred programming language and will be asked to do some coding on the whiteboard.</p>
+<h1 id="Monkey-Patching">Monkey Patching<a class="anchor-link" href="#Monkey-Patching">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">datetime</span>
+<span class="c1">#datetime.datetime.now = lambda: datetime.datetime(2012, 12, 12)</span>
+</pre></div>
 
 </div>
 </div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+
+<span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span>
+<span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span><span class="s1">&#39;c&#39;</span><span class="p">:</span><span class="mi">9</span><span class="p">}</span>
+
+<span class="n">f</span><span class="p">()</span>
+<span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>                    <span class="c1"># (1, 2, 3) {}</span>
+<span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="s2">&quot;groovy&quot;</span><span class="p">)</span>           <span class="c1"># (1, 2, 3, &#39;groovy&#39;) {}</span>
+<span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>              <span class="c1"># () {&#39;a&#39;: 1, &#39;c&#39;: 3, &#39;b&#39;: 2}</span>
+<span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">zzz</span><span class="o">=</span><span class="s2">&quot;hi&quot;</span><span class="p">)</span>     <span class="c1"># () {&#39;a&#39;: 1, &#39;c&#39;: 3, &#39;b&#39;: 2, &#39;zzz&#39;: &#39;hi&#39;}</span>
+<span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>        <span class="c1"># (1, 2, 3) {&#39;a&#39;: 1, &#39;c&#39;: 3, &#39;b&#39;: 2}</span>
+
+<span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">l</span><span class="p">,</span><span class="o">**</span><span class="n">d</span><span class="p">)</span>                   <span class="c1"># (1, 2, 3) {&#39;a&#39;: 7, &#39;c&#39;: 9, &#39;b&#39;: 8}</span>
+<span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">t</span><span class="p">,</span><span class="o">**</span><span class="n">d</span><span class="p">)</span>                   <span class="c1"># (4, 5, 6) {&#39;a&#39;: 7, &#39;c&#39;: 9, &#39;b&#39;: 8}</span>
+<span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>                   <span class="c1"># (1, 2, 4, 5, 6) {}</span>
+<span class="n">f</span><span class="p">(</span><span class="n">q</span><span class="o">=</span><span class="s2">&quot;winning&quot;</span><span class="p">,</span><span class="o">**</span><span class="n">d</span><span class="p">)</span>          <span class="c1"># () {&#39;a&#39;: 7, &#39;q&#39;: &#39;winning&#39;, &#39;c&#39;: 9, &#39;b&#39;: 8}</span>
+<span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">*</span><span class="n">t</span><span class="p">,</span><span class="n">q</span><span class="o">=</span><span class="s2">&quot;winning&quot;</span><span class="p">,</span><span class="o">**</span><span class="n">d</span><span class="p">)</span>   <span class="c1"># (1, 2, 4, 5, 6) {&#39;a&#39;: 7, &#39;q&#39;: &#39;winning&#39;, &#39;c&#39;: 9, &#39;b&#39;: 8}</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>() {}
+(1, 2, 3) {}
+(1, 2, 3, &#39;groovy&#39;) {}
+() {&#39;b&#39;: 2, &#39;a&#39;: 1, &#39;c&#39;: 3}
+() {&#39;zzz&#39;: &#39;hi&#39;, &#39;b&#39;: 2, &#39;a&#39;: 1, &#39;c&#39;: 3}
+(1, 2, 3) {&#39;b&#39;: 2, &#39;a&#39;: 1, &#39;c&#39;: 3}
+(1, 2, 3) {&#39;b&#39;: 8, &#39;a&#39;: 7, &#39;c&#39;: 9}
+(4, 5, 6) {&#39;b&#39;: 8, &#39;a&#39;: 7, &#39;c&#39;: 9}
+(1, 2, 4, 5, 6) {}
+() {&#39;q&#39;: &#39;winning&#39;, &#39;b&#39;: 8, &#39;a&#39;: 7, &#39;c&#39;: 9}
+(1, 2, 4, 5, 6) {&#39;q&#39;: &#39;winning&#39;, &#39;b&#39;: 8, &#39;a&#39;: 7, &#39;c&#39;: 9}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">f2</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span><span class="n">arg2</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span> <span class="nb">print</span><span class="p">(</span><span class="n">arg1</span><span class="p">,</span><span class="n">arg2</span><span class="p">,</span> <span class="n">args</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+
+<span class="n">f2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>                       <span class="c1"># 1 2 (3,) {}</span>
+<span class="n">f2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="s2">&quot;groovy&quot;</span><span class="p">)</span>              <span class="c1"># 1 2 (3, &#39;groovy&#39;) {}</span>
+<span class="n">f2</span><span class="p">(</span><span class="n">arg1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">arg2</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>           <span class="c1"># 1 2 () {&#39;c&#39;: 3}</span>
+<span class="n">f2</span><span class="p">(</span><span class="n">arg1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">arg2</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">zzz</span><span class="o">=</span><span class="s2">&quot;hi&quot;</span><span class="p">)</span>  <span class="c1"># 1 2 () {&#39;c&#39;: 3, &#39;zzz&#39;: &#39;hi&#39;}</span>
+<span class="n">f2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">b</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>           <span class="c1"># 1 2 (3,) {&#39;a&#39;: 1, &#39;c&#39;: 3, &#39;b&#39;: 2}</span>
+
+<span class="n">f2</span><span class="p">(</span><span class="o">*</span><span class="n">l</span><span class="p">,</span><span class="o">**</span><span class="n">d</span><span class="p">)</span>                   <span class="c1"># 1 2 (3,) {&#39;a&#39;: 7, &#39;c&#39;: 9, &#39;b&#39;: 8}</span>
+<span class="n">f2</span><span class="p">(</span><span class="o">*</span><span class="n">t</span><span class="p">,</span><span class="o">**</span><span class="n">d</span><span class="p">)</span>                   <span class="c1"># 4 5 (6,) {&#39;a&#39;: 7, &#39;c&#39;: 9, &#39;b&#39;: 8}</span>
+<span class="n">f2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>                   <span class="c1"># 1 2 (4, 5, 6) {}</span>
+<span class="n">f2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">q</span><span class="o">=</span><span class="s2">&quot;winning&quot;</span><span class="p">,</span><span class="o">**</span><span class="n">d</span><span class="p">)</span>      <span class="c1"># 1 1 () {&#39;a&#39;: 7, &#39;q&#39;: &#39;winning&#39;, &#39;c&#39;: 9, &#39;b&#39;: 8}</span>
+<span class="n">f2</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="o">*</span><span class="n">t</span><span class="p">,</span><span class="n">q</span><span class="o">=</span><span class="s2">&quot;winning&quot;</span><span class="p">,</span><span class="o">**</span><span class="n">d</span><span class="p">)</span>   <span class="c1"># 1 2 (4, 5, 6) {&#39;a&#39;: 7, &#39;q&#39;: &#39;winning&#39;, &#39;c&#39;: 9, &#39;b&#39;: 8} </span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>1 2 (3,) {}
+1 2 (3, &#39;groovy&#39;) {}
+1 2 () {&#39;c&#39;: 3}
+1 2 () {&#39;zzz&#39;: &#39;hi&#39;, &#39;c&#39;: 3}
+1 2 (3,) {&#39;b&#39;: 2, &#39;a&#39;: 1, &#39;c&#39;: 3}
+1 2 (3,) {&#39;b&#39;: 8, &#39;a&#39;: 7, &#39;c&#39;: 9}
+4 5 (6,) {&#39;b&#39;: 8, &#39;a&#39;: 7, &#39;c&#39;: 9}
+1 2 (4, 5, 6) {}
+1 1 () {&#39;q&#39;: &#39;winning&#39;, &#39;b&#39;: 8, &#39;a&#39;: 7, &#39;c&#39;: 9}
+1 2 (4, 5, 6) {&#39;q&#39;: &#39;winning&#39;, &#39;b&#39;: 8, &#39;a&#39;: 7, &#39;c&#39;: 9}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Hashtables">Hashtables<a class="anchor-link" href="#Hashtables">&#182;</a></h1><p>Arguably the single most important data structure known to mankind. You absolutely should know how they work. Be able to implement one using only arrays in your favorite language, in about the space of one interview.</p>
+<h1 id="Object-Oriented-Programming">Object Oriented Programming<a class="anchor-link" href="#Object-Oriented-Programming">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">A</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">go</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;go A go!&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;stop A stop!&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">pause</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Not Implemented&quot;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">B</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">go</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">B</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">go</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;go B go!&quot;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="n">A</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">go</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">go</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;go C go!&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">C</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;stop C stop!&quot;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">D</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">go</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">go</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;go D go!&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">stop</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;stop D stop!&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">pause</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;wait D wait!&quot;</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">E</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">):</span> <span class="k">pass</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">A</span><span class="p">()</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">B</span><span class="p">()</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">C</span><span class="p">()</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">D</span><span class="p">()</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">E</span><span class="p">()</span>
+
+
+<span class="n">a</span><span class="o">.</span><span class="n">go</span><span class="p">()</span>
+<span class="n">b</span><span class="o">.</span><span class="n">go</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">go</span><span class="p">()</span>
+<span class="n">d</span><span class="o">.</span><span class="n">go</span><span class="p">()</span>
+<span class="n">e</span><span class="o">.</span><span class="n">go</span><span class="p">()</span>
+
+<span class="n">a</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<span class="n">b</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<span class="n">d</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+<span class="n">e</span><span class="o">.</span><span class="n">stop</span><span class="p">()</span>
+
+<span class="n">a</span><span class="o">.</span><span class="n">pause</span><span class="p">()</span>
+<span class="n">b</span><span class="o">.</span><span class="n">pause</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">pause</span><span class="p">()</span>
+<span class="n">d</span><span class="o">.</span><span class="n">pause</span><span class="p">()</span>
+<span class="n">e</span><span class="o">.</span><span class="n">pause</span><span class="p">()</span>
+</pre></div>
 
 </div>
 </div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>go A go!
+go A go!
+go B go!
+go A go!
+go C go!
+go A go!
+go C go!
+go B go!
+go D go!
+go A go!
+go C go!
+go B go!
+stop A stop!
+stop A stop!
+stop A stop!
+stop C stop!
+stop A stop!
+stop C stop!
+stop D stop!
+stop A stop!
+stop C stop!
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">Exception</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-23-9442097c6656&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">     51</span> e<span class="ansi-blue-fg">.</span>stop<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     52</span> 
+<span class="ansi-green-fg">---&gt; 53</span><span class="ansi-red-fg"> </span>a<span class="ansi-blue-fg">.</span>pause<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     54</span> b<span class="ansi-blue-fg">.</span>pause<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     55</span> c<span class="ansi-blue-fg">.</span>pause<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">&lt;ipython-input-23-9442097c6656&gt;</span> in <span class="ansi-cyan-fg">pause</span><span class="ansi-blue-fg">(self)</span>
+<span class="ansi-green-intense-fg ansi-bold">      5</span>         print<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;stop A stop!&#34;</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      6</span>     <span class="ansi-green-fg">def</span> pause<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">----&gt; 7</span><span class="ansi-red-fg">         </span><span class="ansi-green-fg">raise</span> Exception<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#34;Not Implemented&#34;</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">      8</span> 
+<span class="ansi-green-intense-fg ansi-bold">      9</span> <span class="ansi-green-fg">class</span> B<span class="ansi-blue-fg">(</span>A<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-red-fg">Exception</span>: Not Implemented</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Sorting">Sorting<a class="anchor-link" href="#Sorting">&#182;</a></h1><p>Know how to sort. Don't do bubble-sort. You should know the details of at least one n*log(n) sorting algorithm, preferably two (say, quicksort and merge sort). Merge sort can be highly useful in situations where quick sort is impractical, so take a look at it.</p>
+<h1 id="Decorators">Decorators<a class="anchor-link" href="#Decorators">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">MyClass</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_some_property</span> <span class="o">=</span> <span class="s2">&quot;properties are nice&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_some_other_property</span> <span class="o">=</span> <span class="s2">&quot;VERY nice&quot;</span>
+    <span class="k">def</span> <span class="nf">normal_method</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;calling normal_method(</span><span class="si">{0}</span><span class="s2">,</span><span class="si">{1}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">args</span><span class="p">,</span><span class="n">kwargs</span><span class="p">))</span>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">class_method</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;calling class_method(</span><span class="si">{0}</span><span class="s2">,</span><span class="si">{1}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">args</span><span class="p">,</span><span class="n">kwargs</span><span class="p">))</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">static_method</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;calling static_method(</span><span class="si">{0}</span><span class="s2">,</span><span class="si">{1}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">args</span><span class="p">,</span><span class="n">kwargs</span><span class="p">))</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">some_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;calling some_property getter(</span><span class="si">{0}</span><span class="s2">,</span><span class="si">{1}</span><span class="s2">,</span><span class="si">{2}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">args</span><span class="p">,</span><span class="n">kwargs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_some_property</span>
+    <span class="nd">@some_property</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">some_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;calling some_property setter(</span><span class="si">{0}</span><span class="s2">,</span><span class="si">{1}</span><span class="s2">,</span><span class="si">{2}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">args</span><span class="p">,</span><span class="n">kwargs</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_some_property</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">some_other_property</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;calling some_other_property getter(</span><span class="si">{0}</span><span class="s2">,</span><span class="si">{1}</span><span class="s2">,</span><span class="si">{2}</span><span class="s2">)&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">args</span><span class="p">,</span><span class="n">kwargs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_some_other_property</span>
+
+<span class="n">o</span> <span class="o">=</span> <span class="n">MyClass</span><span class="p">()</span>
+<span class="c1"># undecorated methods work like normal, they get the current instance (self) as the first argument</span>
+
+<span class="n">o</span><span class="o">.</span><span class="n">normal_method</span> 
+<span class="c1"># &lt;bound method MyClass.normal_method of &lt;__main__.MyClass instance at 0x7fdd2537ea28&gt;&gt;</span>
+
+<span class="n">o</span><span class="o">.</span><span class="n">normal_method</span><span class="p">()</span> 
+<span class="c1"># normal_method((&lt;__main__.MyClass instance at 0x7fdd2537ea28&gt;,),{})</span>
+
+<span class="n">o</span><span class="o">.</span><span class="n">normal_method</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> 
+<span class="c1"># normal_method((&lt;__main__.MyClass instance at 0x7fdd2537ea28&gt;, 1, 2),{&#39;y&#39;: 4, &#39;x&#39;: 3})</span>
+
+<span class="c1"># class methods always get the class as the first argument</span>
+
+<span class="n">o</span><span class="o">.</span><span class="n">class_method</span>
+<span class="c1"># &lt;bound method classobj.class_method of &lt;class __main__.MyClass at 0x7fdd2536a390&gt;&gt;</span>
+
+<span class="n">o</span><span class="o">.</span><span class="n">class_method</span><span class="p">()</span>
+<span class="c1"># class_method((&lt;class __main__.MyClass at 0x7fdd2536a390&gt;,),{})</span>
+
+<span class="n">o</span><span class="o">.</span><span class="n">class_method</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="c1"># class_method((&lt;class __main__.MyClass at 0x7fdd2536a390&gt;, 1, 2),{&#39;y&#39;: 4, &#39;x&#39;: 3})</span>
+
+<span class="c1"># static methods have no arguments except the ones you pass in when you call them</span>
+
+<span class="n">o</span><span class="o">.</span><span class="n">static_method</span>
+<span class="c1"># &lt;function static_method at 0x7fdd25375848&gt;</span>
+
+<span class="n">o</span><span class="o">.</span><span class="n">static_method</span><span class="p">()</span>
+<span class="c1"># static_method((),{})</span>
+
+<span class="n">o</span><span class="o">.</span><span class="n">static_method</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">x</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="c1"># static_method((1, 2),{&#39;y&#39;: 4, &#39;x&#39;: 3})</span>
+
+<span class="c1"># properties are a way of implementing getters and setters. It&#39;s an error to explicitly call them</span>
+<span class="c1"># &quot;read only&quot; attributes can be specified by creating a getter without a setter (as in some_other_property)</span>
+
+<span class="n">o</span><span class="o">.</span><span class="n">some_property</span>
+<span class="c1"># calling some_property getter(&lt;__main__.MyClass instance at 0x7fb2b70877e8&gt;,(),{})</span>
+<span class="c1"># &#39;properties are nice&#39;</span>
+
+<span class="n">o</span><span class="o">.</span><span class="n">some_property</span><span class="p">()</span>
+<span class="c1"># calling some_property getter(&lt;__main__.MyClass instance at 0x7fb2b70877e8&gt;,(),{})</span>
+<span class="c1"># Traceback (most recent call last):</span>
+<span class="c1">#   File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span>
+<span class="c1"># TypeError: &#39;str&#39; object is not callable</span>
+
+<span class="n">o</span><span class="o">.</span><span class="n">some_other_property</span>
+<span class="c1"># calling some_other_property getter(&lt;__main__.MyClass instance at 0x7fb2b70877e8&gt;,(),{})</span>
+<span class="c1"># &#39;VERY nice&#39;</span>
+
+<span class="c1"># o.some_other_property()</span>
+<span class="c1"># calling some_other_property getter(&lt;__main__.MyClass instance at 0x7fb2b70877e8&gt;,(),{})</span>
+<span class="c1"># Traceback (most recent call last):</span>
+<span class="c1">#   File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span>
+<span class="c1"># TypeError: &#39;str&#39; object is not callable</span>
+
+<span class="n">o</span><span class="o">.</span><span class="n">some_property</span> <span class="o">=</span> <span class="s2">&quot;groovy&quot;</span>
+<span class="c1"># calling some_property setter(&lt;__main__.MyClass object at 0x7fb2b7077890&gt;,(&#39;groovy&#39;,),{})</span>
+
+<span class="n">o</span><span class="o">.</span><span class="n">some_property</span>
+<span class="c1"># calling some_property getter(&lt;__main__.MyClass object at 0x7fb2b7077890&gt;,(),{})</span>
+<span class="c1"># &#39;groovy&#39;</span>
+
+<span class="n">o</span><span class="o">.</span><span class="n">some_other_property</span> <span class="o">=</span> <span class="s2">&quot;very groovy&quot;</span>
+<span class="c1"># Traceback (most recent call last):</span>
+<span class="c1">#   File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;</span>
+<span class="c1"># AttributeError: can&#39;t set attribute</span>
+
+<span class="n">o</span><span class="o">.</span><span class="n">some_other_property</span>
+<span class="c1"># calling some_other_property getter(&lt;__main__.MyClass object at 0x7fb2b7077890&gt;,(),{})</span>
+<span class="c1"># &#39;VERY nice&#39;</span>
+</pre></div>
 
 </div>
 </div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>calling normal_method((&lt;__main__.MyClass object at 0x10d78a4e0&gt;,),{})
+calling normal_method((&lt;__main__.MyClass object at 0x10d78a4e0&gt;, 1, 2),{&#39;x&#39;: 3, &#39;y&#39;: 4})
+calling class_method((&lt;class &#39;__main__.MyClass&#39;&gt;,),{})
+calling class_method((&lt;class &#39;__main__.MyClass&#39;&gt;, 1, 2),{&#39;x&#39;: 3, &#39;y&#39;: 4})
+calling static_method((),{})
+calling static_method((1, 2),{&#39;x&#39;: 3, &#39;y&#39;: 4})
+calling some_property getter(&lt;__main__.MyClass object at 0x10d78a4e0&gt;,(),{})
+calling some_property getter(&lt;__main__.MyClass object at 0x10d78a4e0&gt;,(),{})
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-19-723c70074515&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-intense-fg ansi-bold">     65</span> <span class="ansi-red-fg"># &#39;properties are nice&#39;</span>
+<span class="ansi-green-intense-fg ansi-bold">     66</span> 
+<span class="ansi-green-fg">---&gt; 67</span><span class="ansi-red-fg"> </span>o<span class="ansi-blue-fg">.</span>some_property<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     68</span> <span class="ansi-red-fg"># calling some_property getter(&lt;__main__.MyClass instance at 0x7fb2b70877e8&gt;,(),{})</span>
+<span class="ansi-green-intense-fg ansi-bold">     69</span> <span class="ansi-red-fg"># Traceback (most recent call last):</span>
+
+<span class="ansi-red-fg">TypeError</span>: &#39;str&#39; object is not callable</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Trees">Trees<a class="anchor-link" href="#Trees">&#182;</a></h1><p>Know about trees; basic tree construction, traversal and manipulation algorithms. Familiarize yourself with binary trees, n-ary trees, and trie-trees. Be familiar with at least one type of balanced binary tree, whether it's a red/black tree, a splay tree or an AVL tree, and know how it's implemented. Understand tree traversal</p>
-
+<h1 id="Generators">Generators<a class="anchor-link" href="#Generators">&#182;</a></h1>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Other-Data-Structures">Other Data Structures<a class="anchor-link" href="#Other-Data-Structures">&#182;</a></h1><p>You should study up on as many other data structures and algorithms as possible. You should especially know about the most famous classes of NP-complete problems, such as traveling salesman and the knapsack problem, and be able to recognize them when an interviewer asks you them in disguise. Find out whatNP-complete means.</p>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Node</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">sName</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lChildren</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sName</span> <span class="o">=</span> <span class="n">sName</span>
+    <span class="k">def</span> <span class="nf">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s2">&quot;&lt;Node &#39;</span><span class="si">{}</span><span class="s2">&#39;&gt;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sName</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">append</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_lChildren</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">print_all_1</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">oChild</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_lChildren</span><span class="p">:</span>
+            <span class="n">oChild</span><span class="o">.</span><span class="n">print_all_1</span><span class="p">()</span>
+    <span class="k">def</span> <span class="nf">print_all_2</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">def</span> <span class="nf">gen</span><span class="p">(</span><span class="n">o</span><span class="p">):</span>
+            <span class="n">lAll</span> <span class="o">=</span> <span class="p">[</span><span class="n">o</span><span class="p">,]</span>
+            <span class="k">while</span> <span class="n">lAll</span><span class="p">:</span>
+                <span class="n">oNext</span> <span class="o">=</span> <span class="n">lAll</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">lAll</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">oNext</span><span class="o">.</span><span class="n">_lChildren</span><span class="p">)</span>
+                <span class="k">yield</span> <span class="n">oNext</span>
+        <span class="k">for</span> <span class="n">oNode</span> <span class="ow">in</span> <span class="n">gen</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">oNode</span><span class="p">)</span>
+
+<span class="n">oRoot</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;root&quot;</span><span class="p">)</span>
+<span class="n">oChild1</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;child1&quot;</span><span class="p">)</span>
+<span class="n">oChild2</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;child2&quot;</span><span class="p">)</span>
+<span class="n">oChild3</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;child3&quot;</span><span class="p">)</span>
+<span class="n">oChild4</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;child4&quot;</span><span class="p">)</span>
+<span class="n">oChild5</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;child5&quot;</span><span class="p">)</span>
+<span class="n">oChild6</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;child6&quot;</span><span class="p">)</span>
+<span class="n">oChild7</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;child7&quot;</span><span class="p">)</span>
+<span class="n">oChild8</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;child8&quot;</span><span class="p">)</span>
+<span class="n">oChild9</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;child9&quot;</span><span class="p">)</span>
+<span class="n">oChild10</span> <span class="o">=</span> <span class="n">Node</span><span class="p">(</span><span class="s2">&quot;child10&quot;</span><span class="p">)</span>
+
+<span class="n">oRoot</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">oChild1</span><span class="p">)</span>
+<span class="n">oRoot</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">oChild2</span><span class="p">)</span>
+<span class="n">oRoot</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">oChild3</span><span class="p">)</span>
+<span class="n">oChild1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">oChild4</span><span class="p">)</span>
+<span class="n">oChild1</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">oChild5</span><span class="p">)</span>
+<span class="n">oChild2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">oChild6</span><span class="p">)</span>
+<span class="n">oChild4</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">oChild7</span><span class="p">)</span>
+<span class="n">oChild3</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">oChild8</span><span class="p">)</span>
+<span class="n">oChild3</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">oChild9</span><span class="p">)</span>
+<span class="n">oChild6</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">oChild10</span><span class="p">)</span>
+
+<span class="c1"># specify output from here onwards</span>
+
+<span class="n">oRoot</span><span class="o">.</span><span class="n">print_all_1</span><span class="p">()</span>
+<span class="n">oRoot</span><span class="o">.</span><span class="n">print_all_2</span><span class="p">()</span>
+</pre></div>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;Node &#39;root&#39;&gt;
+&lt;Node &#39;child1&#39;&gt;
+&lt;Node &#39;child4&#39;&gt;
+&lt;Node &#39;child7&#39;&gt;
+&lt;Node &#39;child5&#39;&gt;
+&lt;Node &#39;child2&#39;&gt;
+&lt;Node &#39;child6&#39;&gt;
+&lt;Node &#39;child10&#39;&gt;
+&lt;Node &#39;child3&#39;&gt;
+&lt;Node &#39;child8&#39;&gt;
+&lt;Node &#39;child9&#39;&gt;
+&lt;Node &#39;root&#39;&gt;
+&lt;Node &#39;child1&#39;&gt;
+&lt;Node &#39;child2&#39;&gt;
+&lt;Node &#39;child3&#39;&gt;
+&lt;Node &#39;child4&#39;&gt;
+&lt;Node &#39;child5&#39;&gt;
+&lt;Node &#39;child6&#39;&gt;
+&lt;Node &#39;child8&#39;&gt;
+&lt;Node &#39;child9&#39;&gt;
+&lt;Node &#39;child7&#39;&gt;
+&lt;Node &#39;child10&#39;&gt;
+</pre>
 </div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Algorithms">Algorithms<a class="anchor-link" href="#Algorithms">&#182;</a></h1><p>BFS and DFS, and know the difference between inorder, postorder and preorder.
-Graphs: Graphs are really important at Google. There are 3 basic ways to represent a graph in memory (objects and pointers, matrix, and adjacency list); familiarize yourself with each representation and its pros &amp; cons. You should know the basic graph traversal algorithms: breadth-first search and depth-first search. Know their computational complexity, their tradeoffs, and how to implement them in real code. If you get a chance, try to study up on fancier algorithms, such as Dijkstra and A*.</p>
-<p>You may want to refresh hash tables, heaps, binary trees, linked lists, depth-first search, recursion. For more information on Algorithms you can visit:
-<a href="http://www.topcoder.com/tc?module=Static&amp;d1=tutorials&amp;d2=alg_index">http://www.topcoder.com/tc?module=Static&amp;d1=tutorials&amp;d2=alg_index</a></p>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Efficiency</span>
+</pre></div>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Big-O-notations">Big-O notations<a class="anchor-link" href="#Big-O-notations">&#182;</a></h1><p>also known as "the run time characteristic of an algorithm".</p>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="n">lIn</span><span class="p">):</span>
+    <span class="n">l1</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">lIn</span><span class="p">)</span>
+    <span class="n">l2</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">l1</span> <span class="k">if</span> <span class="n">i</span><span class="o">&lt;</span><span class="mf">0.5</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">l2</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">f2</span><span class="p">(</span><span class="n">lIn</span><span class="p">):</span>
+    <span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lIn</span> <span class="k">if</span> <span class="n">i</span><span class="o">&lt;</span><span class="mf">0.5</span><span class="p">]</span>
+    <span class="n">l2</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">l1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">l2</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">f3</span><span class="p">(</span><span class="n">lIn</span><span class="p">):</span>
+    <span class="n">l1</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lIn</span><span class="p">]</span>
+    <span class="n">l2</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">l1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">l1</span> <span class="k">if</span> <span class="n">i</span><span class="o">&lt;</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="mf">0.5</span><span class="p">)]</span>
+</pre></div>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Mathematics">Mathematics<a class="anchor-link" href="#Mathematics">&#182;</a></h1><p>Some interviewers ask basic discrete math questions. This is more prevalent at Google than at other companies because counting problems, probability problems, and other Discrete Math 101 situations surrounds us. Spend some time before the interview refreshing your memory on (or teaching yourself) the essentials of combinatorics and probability. You should be familiar with n-choose-k problems and their ilk – the more the better.</p>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">cProfile</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="n">listing</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000000</span><span class="p">)</span>
+<span class="n">cProfile</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;f1(range(1000000))&#39;</span><span class="p">)</span>
+<span class="n">cProfile</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;f2(range(1000000))&#39;</span><span class="p">)</span>
+<span class="n">cProfile</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s1">&#39;f3(range(1000000))&#39;</span><span class="p">)</span>
+</pre></div>
 
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>         7 function calls in 0.154 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.140    0.140 &lt;ipython-input-28-944e24ebc84c&gt;:1(f1)
+        1    0.097    0.097    0.097    0.097 &lt;ipython-input-28-944e24ebc84c&gt;:3(&lt;listcomp&gt;)
+        1    0.000    0.000    0.000    0.000 &lt;ipython-input-28-944e24ebc84c&gt;:4(&lt;listcomp&gt;)
+        1    0.014    0.014    0.154    0.154 &lt;string&gt;:1(&lt;module&gt;)
+        1    0.000    0.000    0.154    0.154 {built-in method builtins.exec}
+        1    0.043    0.043    0.043    0.043 {built-in method builtins.sorted}
+        1    0.000    0.000    0.000    0.000 {method &#39;disable&#39; of &#39;_lsprof.Profiler&#39; objects}
+
+
+         7 function calls in 0.113 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.113    0.113 &lt;ipython-input-28-944e24ebc84c&gt;:6(f2)
+        1    0.113    0.113    0.113    0.113 &lt;ipython-input-28-944e24ebc84c&gt;:7(&lt;listcomp&gt;)
+        1    0.000    0.000    0.000    0.000 &lt;ipython-input-28-944e24ebc84c&gt;:9(&lt;listcomp&gt;)
+        1    0.000    0.000    0.113    0.113 &lt;string&gt;:1(&lt;module&gt;)
+        1    0.000    0.000    0.113    0.113 {built-in method builtins.exec}
+        1    0.000    0.000    0.000    0.000 {built-in method builtins.sorted}
+        1    0.000    0.000    0.000    0.000 {method &#39;disable&#39; of &#39;_lsprof.Profiler&#39; objects}
+
+
+         7 function calls in 0.225 seconds
+
+   Ordered by: standard name
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+        1    0.000    0.000    0.209    0.209 &lt;ipython-input-28-944e24ebc84c&gt;:11(f3)
+        1    0.092    0.092    0.092    0.092 &lt;ipython-input-28-944e24ebc84c&gt;:12(&lt;listcomp&gt;)
+        1    0.090    0.090    0.090    0.090 &lt;ipython-input-28-944e24ebc84c&gt;:14(&lt;listcomp&gt;)
+        1    0.016    0.016    0.225    0.225 &lt;string&gt;:1(&lt;module&gt;)
+        1    0.000    0.000    0.225    0.225 {built-in method builtins.exec}
+        1    0.027    0.027    0.027    0.027 {built-in method builtins.sorted}
+        1    0.000    0.000    0.000    0.000 {method &#39;disable&#39; of &#39;_lsprof.Profiler&#39; objects}
+
+
+</pre>
 </div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Operating-Systems">Operating Systems<a class="anchor-link" href="#Operating-Systems">&#182;</a></h1><p>Know about processes, threads and concurrency issues. Know about locks and mutexes and semaphores and monitors and how they work. Know about deadlock and livelock and how to avoid them. Know what resources a processes needs, and a thread needs, and how context switching works, and how it's initiated by the operating system and underlying hardware. Know a little about scheduling. The world is rapidly moving towards multi-core, so know the fundamentals of "modern" concurrency constructs. For information on System Design:
-<a href="http://research.google.com/pubs/DistributedSystemsandParallelComputing.html">http://research.google.com/pubs/DistributedSystemsandParallelComputing.html</a></p>
+</div>
 
 </div>
 </div>
+
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
