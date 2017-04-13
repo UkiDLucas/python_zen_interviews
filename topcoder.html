@@ -11802,7 +11802,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># input size</span>
@@ -11836,7 +11836,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">TimeIt</span><span class="p">():</span>
@@ -11844,7 +11844,9 @@ div#notebook {
     <span class="k">def</span> <span class="nf">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">start</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
     <span class="k">def</span> <span class="nf">__exit__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;runtime: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">measured</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start</span>
+        <span class="c1">#print(&#39;runtime: {}&#39;.format(self.measured))</span>
+        <span class="n">times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">measured</span><span class="o">.</span><span class="n">microseconds</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -11863,6 +11865,8 @@ div#notebook {
 <span class="n">sample_set</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;l&#39;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sample_set</span><span class="p">))</span>
+
+<span class="n">times</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">with</span> <span class="n">TimeIt</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sample_set:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">sample_set</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">])</span>
@@ -11888,21 +11892,72 @@ div#notebook {
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>1000
 sample_set:
- [802 764 134 376  58 463 683 661  61 758]
-runtime: 0:00:00.000782
+ [249 838 415 517 369 456 621 657 995 255]
 sorted sample_set:
- [0, 1, 2, 2, 5, 6, 6, 7, 7, 7]
-runtime: 0:00:00.000871
+ [4, 4, 7, 7, 7, 8, 8, 8, 10, 12]
 sample_set:
- [802 764 134 376  58 463 683 661  61 758]
-runtime: 0:00:00.000568
+ [249 838 415 517 369 456 621 657 995 255]
 sorted sample_set:
- [0, 1, 2, 2, 5, 6, 6, 7, 7, 7]
-runtime: 0:00:00.000746
+ [4, 4, 7, 7, 7, 8, 8, 8, 10, 12]
 </pre>
 </div>
 </div>
 
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">plot_results</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">times</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">numpy</span>
+    <span class="n">logs</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">sizes</span><span class="p">)</span>
+    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+    
+    
+    
+    <span class="n">sizes_times</span><span class="p">,</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="s2">&quot;.b&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Line 2&#39;</span><span class="p">)</span>
+    <span class="n">sizes_logs</span><span class="p">,</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">logs</span><span class="p">,</span> <span class="s2">&quot;.y&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Line 2&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="n">sizes_times</span><span class="p">,</span> <span class="n">sizes_logs</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;size vs time&#39;</span><span class="p">,</span> <span class="s1">&#39;size log(10)&#39;</span><span class="p">])</span>
+
+
+    <span class="c1">#plt.plot(sizes, times, &quot;.b&quot;, sizes, logs, &quot;.y&quot;, label=&#39;logs&#39;)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;sample size&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;microseconds&#39;</span><span class="p">)</span>
+    <span class="c1">#plt.axis([0, 6, 0, 20]) # axis spans</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">time_function</span><span class="p">(</span><span class="n">my_function</span><span class="p">):</span>
+    <span class="n">times</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">sizes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">sample_size</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="mi">20</span><span class="p">):</span>  
+        <span class="n">sizes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sample_size</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">TimeIt</span><span class="p">():</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">my_function</span><span class="p">(</span><span class="n">listing</span> <span class="o">=</span> <span class="n">sample_set</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">sample_size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+            <span class="nb">print</span> <span class="p">(</span><span class="n">sample_size</span><span class="p">,</span> <span class="s2">&quot;sample_size produced first element =&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;times in microseconds</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">times</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sizes</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">sizes</span><span class="p">)</span>
+
+    <span class="n">plot_results</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">times</span><span class="p">)</span>
+</pre></div>
+
+</div>
 </div>
 </div>
 
@@ -11919,21 +11974,39 @@ runtime: 0:00:00.000746
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 
 <span class="k">def</span> <span class="nf">return_first_element</span><span class="p">(</span><span class="n">listing</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
-    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+    <span class="c1">#time.sleep(C)</span>
+    <span class="c1">#print(&quot;EE&quot;)</span>
     <span class="k">return</span> <span class="n">listing</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
 
-<span class="k">with</span> <span class="n">TimeIt</span><span class="p">():</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="n">return_first_element</span><span class="p">(</span><span class="n">listing</span> <span class="o">=</span> <span class="n">sample_set</span><span class="p">)</span> <span class="p">)</span>
+</div>
+</div>
+</div>
 
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span>  
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">times</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">sizes</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">sample_size</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="mi">20</span><span class="p">):</span>  
+    <span class="n">sizes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sample_size</span><span class="p">)</span>
     <span class="k">with</span> <span class="n">TimeIt</span><span class="p">():</span>
-        <span class="nb">print</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">return_first_element</span><span class="p">(</span><span class="n">listing</span> <span class="o">=</span> <span class="n">sample_set</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="p">)</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">return_first_element</span><span class="p">(</span><span class="n">listing</span> <span class="o">=</span> <span class="n">sample_set</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">sample_size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="c1">#print (sample_size, &quot;sample_size produced first element =&quot;, x)</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;times in microseconds</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">times</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;sizes</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span><span class="n">sizes</span><span class="p">)</span>
+
+<span class="n">plot_results</span><span class="p">(</span><span class="n">sizes</span><span class="p">,</span> <span class="n">times</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -11948,30 +12021,182 @@ runtime: 0:00:00.000746
 <div class="prompt"></div>
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>802
-runtime: 0:00:01.005087
-0 802
-runtime: 0:00:01.003760
-100 802
-runtime: 0:00:01.003790
-200 802
-runtime: 0:00:01.005137
-300 802
-runtime: 0:00:01.003938
-400 802
-runtime: 0:00:01.004196
-500 802
-runtime: 0:00:01.004058
-600 802
-runtime: 0:00:01.005442
-700 802
-runtime: 0:00:01.003766
-800 802
-runtime: 0:00:01.000245
-900 802
-runtime: 0:00:01.004202
+<pre>times in microseconds
+ [14, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
+sizes
+ [0, 20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, 240, 260, 280, 300, 320, 340, 360, 380, 400, 420, 440, 460, 480, 500, 520, 540, 560, 580, 600, 620, 640, 660, 680, 700, 720, 740, 760, 780, 800, 820, 840, 860, 880, 900, 920, 940, 960, 980]
 </pre>
 </div>
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/ukilucas/anaconda3/envs/py352_tf_cpu/lib/python3.5/site-packages/ipykernel/__main__.py:3: RuntimeWarning: divide by zero encountered in log10
+  app.launch_new_instance()
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+<div class="prompt"></div>
+
+
+
+<div class="output_png output_subarea ">
+<img src="data:image/png;base64,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
+t2DBAk466aSUxnDbbbdxzTXXAHDYYYdx3333ceONN+41TX19PTNmzODZZ59l48aNLFq0qCmBXX31
+1dx5550JiU2JQERSqqamlG3bbqempvP9UCeqG+p9VVRUMG7cOEaOHMlFF13Ezp07AXj99dcZOXIk
+RUVFzJw5k+HDhwOwa9cu1q1bx6hRowA48sgjOfnkk+nevftey33ttdcYMmQIgwcPpkePHkyZMoUn
+nwwe5njGGWewbNky6urqOv097UuJQERSpqamlLVrJ7B1609Zu3ZCp5PBc889R//+/Vm7di3r16/n
+vPP2fmz6xIkTqaiooKKiglGjRnHjjTeyZ88errnmGpYsWUJ5eTlXXHEFN910U5v1XHrppdxxxx2s
+W7eOESNGMGfOHAAuv/xyHnzwQUpLS8nOzm6avqysrCkptOX9999n4MCBTcMDBgzg/fffB4JO6IYM
+GcLate0+4LHDlAhEJGWqq0toaKgF6mloqKW6uqRTy0tkN9SNampqqK6uZvz48QBMmzaNFStWUF1d
+za5duzj11FMB+M53vtM0z/bt2+nbt2+78bfU5U/zB9MfeeSRfPDBB+0up6PU6ZyIpExeXjFZWT1o
+aKglK6sHeXnFnVpeIruhbk9b/bbl5uaye/fudpcxYMAA3nvvvabhyspK+vfv3zS8e/fupl5Tu5KO
+CEQkZXr3LmLUqOUMGjSXUaOW07t357ohTWQ31F/G3Js+ffqwcuVKAB599FHGjx9Pnz596NWrF6+8
+8goQPLym0YknntjUjXRbTj75ZDZv3szWrVupra3liSee2Ov5xm+//XaLvaJ2lo4IRCSlevcu6nQC
+aJTobqgbPfLII3zve9/jiy++YPDgwTz88MMA/OpXv+K73/0uPXv2pLi4uKlp6oQTTqCmpoZdu3bR
+q1cvPvzwQwoLC/n000/JysrinnvuYePGjRx66KHcf//9nHvuudTX13PFFVc0xfHRRx+Rm5tLv379
+uuS7ak7dUItIl4l6N9SfffYZhxxyCADz5s1j+/bt3HvvvQDcfffd9OrVq+lego66++67OfTQQ5k+
+veWn/qobahGRA8DTTz9NQUEBw4cPZ+XKlfzkJz9pGnf11Vfv9SjKjsrLy2PatGldEeZ+dEQgIl0m
+6kcEqaQjAhE5YKTDj8tM09nvXIlARLpMTk4OO3bsUDJIIndnx44d5OTkxL2MhF01ZGYPARcCH7v7
+8LDsZ8A3gFrgb8Dl7l6dqBhEJLkGDBhAZWUlVVVVqQ4lUnJychgwYEDc8yfy8tGFwP3Ar5uVvQDM
+cvc6M7sDmAX8KIExiEgSde/evan/HkkfCWsacvcVwCf7lD3v7o09Jr0CxJ/CRESkS6TyHMEVwLOt
+jTSzq8yszMzKdJgpIpI4KUkEZnYTUAc83to07j7f3QvdvTCWzppERCQ+Se9iwsymEZxEnuC6tEBE
+JOWSmgjM7DyCk8Pj3f2LZNYtIiItS1jTkJktAkqBoWZWaWbTCa4i6gW8YGYVZvZgouoXEZHYJOyI
+wN2ntlD8q0TVJyIi8dGdxSIiEadEICIScUoEIiIRp0QgIhJxSgQiIhGnRCAiEnFKBCIiEadEICIS
+cUoEIiIRp0QgIhJxSgQiIhGnRCAiEnFKBCIiEadEICIScUoEIiIRp0QgIhJxSgQiIhGnRCAiEnFK
+BCIiEadEICIScUoEIiIRp0QgIhJxCUsEZvaQmX1sZuublR1mZi+Y2ebwvU+i6hcRkdgk8ohgIXDe
+PmU/Bpa7+3HA8nBYRERSKGGJwN1XAJ/sU/xN4JHw8yPAtxJVv4iIxCbZ5wiOcvftAOH7kUmuX0RE
+9nHAniw2s6vMrMzMyqqqqlIdjohIxkp2IvjIzPoBhO8ftzahu89390J3L+zbt2/SAhQRiZpkJ4Kl
+wLTw8zTgySTXLyIi+0jk5aOLgFJgqJlVmtl0YB5wtpltBs4Oh0VEJIW6JWrB7j61lVETElWniIh0
+3AF7slhERJJDiUBEJOKUCEREIi6mRGBmuWY2NNHBiIhI8rWbCMzsG0AF8Fw4XGBmSxMdmIiIJEcs
+RwSzgVOAagB3rwDyExeSiIgkUyyJoM7daxIeiYiIpEQs9xGsN7PvANlmdhxwLbAqsWGJiEiyxHJE
+cA0wDPgX8BugBrg+kUGJiEjyxHJEMBa42d1vaiwwszHA6oRFJSIiSRPLEcGfgRfN7KhmZQsSFI+I
+iCRZLIngLeBnQImZnRqWWeJCEhGRZIqlacjd/SkzewtYbGYPAZ7guEREJEliOSIwAHffDJwBfA0Y
+mcigREQkedo9InD30c0+fw78u5kdndCoREQkaVpNBGb2Q3e/08zua2WSaxMUk4iIJFFbRwSbwvfy
+ZAQiIiKp0WoicPc/he+PNJaZWRZwiLt/moTYREQkCWLpffQ3ZnaomfUENgJvmdnMxIcmIiLJEMtV
+QyeFRwDfAp4Bjgb+Z0KjEhGRpIklEXQ3s+4EieBJd9+D7iMQEckYsSSCXwLvAD2BFWZ2DKBzBCIi
+GaLdRODu97n7V9z9fHd34F3gzM5UamY3mNkGM1tvZovMLKczyxMRkfh1+OH1HqiLt0Iz+wrBPQiF
+7j4cyAamxLs8ERHpnA4ngi7SDcg1s27AwcAHKYpDRCTykp4I3P194C6CJqbtQI27P5/sOEREJBDL
+fQQHm9lPzey/wuHjzOzCeCs0sz7AN4FBQH+gp5ld0sJ0V5lZmZmVVVVVxVudiIi0I5YjgocJHlNZ
+FA5XArd2os6vA1vdvSq8FPUPwKn7TuTu89290N0L+/bt24nqRESkLbEkgmPd/U5gD4C7/5POPZjm
+XWBceKRhwAS+7NdIRESSLJZEUGtmuYQ3kZnZsQRHCHFx91eBJQTPPH4jjGF+vMsTEZHOieUJZbcA
+zwEDzexx4DTgss5U6u63hMsVEZEUi+XBNC+Y2WpgHEGT0HXu/o+ERyYiIknR1oNpxuxTtD18P9rM
+jnb31YkLS0REkqWtI4L/08Y4B87q4lhERCQF2nowTaf6ExIRkfTQ7jmCsEO47wOnExwJrAQedPfd
+CY5NRESSIJarhn4N7AJ+Hg5PBR4FJiUqKBERSZ5YEsFQdx/VbPglM1ubqIBERCS5YrmhbI2ZjWsc
+MLOvAi8nLiQREUmmWI4IvgpcambvhsNHA5vM7A2CxxOMTFh0IiKScLEkgvMSHoWIiKRMLHcWbwu7
+jh7YfHrdUCYikhliuXx0LkHfQn8j7HgO3VAmIpIxYmka+neCrqhrEx2MiIgkXyxXDa0H8hIdiIiI
+pEYsRwS3E1xCup5mzyFw94kJi0pERJImlkTwCHAHwUNkGhIbjoiIJFssieAf7n5fwiMREZGUiCUR
+lJvZ7cBS9m4a0uWjIiIZIJZEMDp8H9esTJePiohkiFhuKNNzCUREMlgsRwSY2QXAMCCnsczd/3ei
+ghIRkeRp9z4CM3sQmAxcQ/Dw+knAMQmOS0REkiSWG8pOdfdLgZ3uPgcoIuh3KG5mlmdmS8zsTTPb
+ZGZFnVmeiIjEL5amoX+G71+YWX9gBzCok/XeCzzn7t82sx7AwZ1cnoiIxCmWRPCUmeUBPwNWE1wx
+tCDeCs3sUOBrBB3ZEfZhpH6MRERSJJarhuaGH39vZk8BOe5e04k6BwNVwMNmNgooB65z9887sUwR
+EYlTLCeLJ5lZr3BwJsEOfHRb87SjGzAGeMDdRwOfAz9uod6rzKzMzMqqqqo6UZ2IiLQllpPFP3X3
+XWZ2OnAuQd9DD3aizkqg0t1fDYeXECSGvbj7fHcvdPfCvn37dqI6ERFpSyyJoD58v4DgV/yTQI94
+K3T3D4H3zGxoWDQB2Bjv8kREpHNiOVn8vpn9Evg6cIeZHURsCaQt1wCPh1cM/R24vJPLExGROMX6
+hLLzgLvcvdrM+hGcK4ibu1cAhZ1ZhoiIdI1Yrhr6AvhDs+HtwPZEBiUiIsnT2SYeERFJc0oEIiIR
+p0QgIhJxSgQiIhGnRCAiEnFKBCIiEadEICIScUoEIiIRp0QgIhJxSgQiIhGnRCAiEnFKBCIiEadE
+ICIScUoEIiIRp0QgIhJxSgQiIhGnRCAiEnFKBCIiEadEICIScUoEIiIRp0QgIhJxKUsEZpZtZmvM
+7KlUxSAiIqk9IrgO2JTC+kVEhBQlAjMbAFwALEhF/SIi8qVUHRHcA/wQaEhR/SIiEkp6IjCzC4GP
+3b28nemuMrMyMyurqqpKUnQiItGTiiOC04CJZvYO8ARwlpk9tu9E7j7f3QvdvbBv377JjlFEJDKS
+ngjcfZa7D3D3fGAK8KK7X5LsOEREJKD7CEREIq5bKit39xKgJJUxiIhEnY4IREQiTolARCTilAhE
+RCJOiUBEJOKUCEREIk6JQEQk4pQIREQiTolARCTiIpkISkvh9tuDd5FU0d+hHChSemdxKpSWwoQJ
+UFsLPXrA8uVQVJTqqCRq9Hd4YKmpKaW6uoS8vGJ69y5qtzyeebqyjq4WuURQUhL889XXB+8lJfoH
+lOTT3+H+UrUzrqkpZe3aCTQ01JKV1YNRo5bTu3dRq+XxzNOVdSRC5BJBcXHwC6zxl1hxcaojkihK
+9d9hMn61psvOuLq6hIaGWqCehoZaqqtL2iwHOjxPV9aRCJFLBEVFwWF4SUnwzxf1X2GSGm39HSZ6
+Z5yMX63ptDPOyysmK6tHU0x5ecUArZa3Na6rytsb19Uilwgg+KdTApB4dOVO+qSTSunfvyT8B0/e
+L+Nk/GpNp51x795FjBq1fL9t1Fp5PPN0ZR2JEMlEINGTLs0XydgZJ+NXazrtjBvHtbSjba08nnm6
+so6upkQgB6yuvCojXZovkrEzTsav1nTbGUedEoEkTarasdOp+SIZO+PGcYn+1aqdcfpQIpC4JPpX
+eVe2Y6dT80XjuETvjEWaUyIQIPFt5alsx0635guRZFMiyEAH2q91SG07duN4NV+ItEyJII2ly691
+SH07toi0TokgDXRkh38g/lpvpB24yIEp6YnAzAYCvwb+DWgA5rv7vcmO40DUFTv8A/XXuogcuFJx
+RFAH/Ie7rzazXkC5mb3g7htTEEvSdbSdvqM7fP1aF5GOyp49e3ZSK5w9e/Zns2fP3h5+rp0zZ87X
+gTdnz57999bmmT9//uyrrroqKfGVlsJjj0G3bjBwYPzlL79cyksvPcbnn3fj6KODETU1paxZM4Gd
+O5fx4YeP06fPWeTkBOM++ugxdu5cBtTj7uTmDiYv7wzMuvHhh4/j7pj1YNCgW8jJGUhOzkAqK89i
+69bBHHHELRx33Jc76zVrBvKnP51Bz54D94qptfKuXO/WypNRR7rV3ZpMWT/Vnfy/nX3NmTNn++zZ
+s+e3O6G7p+wF5APvAoe2Nd3YsWM9GVatcs/Ndc/ODt5XrYqv/K9/XeXPPpvry5Zl+7PP5vpf/xqM
+WLHiNl+2LNtfegl/4YVsX7Hitqa6G+d54YW951m1yn306FV+ySW3+ejRq+KOqbXyrlxWKutIt7pb
+kynrp7qT/7fTEqDMY9gXp+wJZWZ2CPB74Hp3/7SF8VeZWZmZlVVVVSUlppb6iG+v/NhjS5k8+XaO
+Pba0qXzLlhK6d68lO7uebt1q2bIlGFFRUcyePT2oq8umrq4HFRXFTXWvWFHEzJnLefjhucycuZwV
+K4qa6li3rojHHpvFunVFMcXUkfKuXFYq60i3uluTKeunupP/t9MZKblqyMy6EySBx939Dy1N4+7z
+gfkAhYWFnoy4WusjvrgYRo4sZdiwEjZsKKa4ONhJf+1rpYwePYHu3WvZs6cHvXotB4oYMqSYXbt6
+4F5LXV0PhgwJFlRYWMSMGcublvOLXxTtVffcuUVs2lS0X92txdQV5ZlSR7rV3ZpMWT/Vnfy/nc6w
+4OgheczMgEeAT9z9+ljmKSws9LKyssQGFiot3b+P+Ma2ffdazHowenRwInfbttvZuvWnQD2QzaBB
+cznmmFlAcI5gy5YShgwp5rTTitpcfnvjEl2eKXWkW92tyZT1U93J/9vZl5mVu3thu9OlIBGcDqwE
+3iC4fBTgP939mdbmSWYiaElrO/xkPkpORKSjYk0ESW8acve/ApbsemPV0uWdHb1UU0QknejO4mZa
++4Ufz41VIiLpQomgmba6YdAOX0QyVVaqAziQNDYBQXbCHxYtInKg0BFBM2rzF5EoimQiaK2/H1AT
+kIhET+QSgS75FBHZW+TOEbR0QlhEJMoilwh0QlhEZG+RaxrSCWERkb1FLhGATgiLiDQXuaYhERHZ
+mxKBiEjEKRGIiEScEoGISMQpEYiIRJwSgYhIxCX9CWXxMLMqYFucsx8B/KMLw0kXWu/oieq6a71b
+d4y7921vQWmRCDrDzMpieVRbptF6R09U113r3XlqGhIRiTglAhGRiItCIpif6gBSROsdPVFdd613
+J2X8OQIREWlbFI4IRESkDRmdCMzsPDN7y8y2mNmPUx1PVzKzgWb2kpltMrMNZnZdWH6Ymb1gZpvD
+9z5huZnZfeF3sc7MxqR2DeJnZtlmtsbMngqHB5nZq+E6LzazHmH5QeHwlnB8firj7iwzyzOzJWb2
+ZrjdiyKyvW8I/8bXm9kiM8vJxG1uZg+Z2cdmtr5ZWYe3r5lNC6ffbGbTYqk7YxOBmWUDvwD+B3AS
+MNXMTkptVF2qDvgPdz8RGAfMCNfvx8Bydz8OWB4OQ/A9HBe+rgIeSH7IXeY6YFOz4TuAu8N13glM
+D8unAzvdfQhwdzhdOrsXeM7dTwBGEXwHGb29zewrwLVAobsPB7KBKWTmNl8InLdPWYe2r5kdBtwC
+fBU4BbilMXm0yd0z8gUUAX9uNjwLmJXquBK4vk8CZwNvAf3Csn7AW+HnXwJTm03fNF06vYAB4T/E
+WcBTgBHcVNNt3+0O/BkoCj93C6ezVK9DnOt9KLB13/gjsL2/ArwHHBZuw6eAczN1mwP5wPp4ty8w
+Ffhls/K9pmvtlbFHBHz5B9SoMizLOOHh72jgVeAod98OEL4fGU6WKd/HPcAPgYZw+HCg2t3rwuHm
+69W0zuH4mnD6dDQYqAIeDpvFFphZTzJ8e7v7+8BdwLvAdoJtWE40tjl0fPvGtd0zORFYC2UZd4mU
+mR0C/B643t0/bWvSFsrS6vswswuBj929vHlxC5N6DOPSTTdgDPCAu48GPufLZoKWZMS6h80a3wQG
+Af2BngTNIvvKxG3eltbWM671z+REUAkMbDY8APggRbEkhJl1J0gCj7v7H8Lij8ysXzi+H/BxWJ4J
+38dpwEQzewd4gqB56B4gz8waH7vafL2a1jkc3xv4JJkBd6FKoNLdXw2HlxAkhkze3gBfB7a6e5W7
+7wH+AJxKNLY5dHz7xrXdMzkRvA4cF15d0IPgBNPSFMfUZczMgF8Bm9z9/zYbtRRovFJgGsG5g8by
+S8OrDcYBNY2HnOnC3We5+wB3zyfYni+6+8XAS8C3w8n2XefG7+Lb4fRp+evQ3T8E3jOzoWHRBGAj
+Gby9Q+8C48zs4PBvvnG9M36bhzq6ff8MnGNmfcKjqXPCsral+uRIgk+8nA+8DfwNuCnV8XTxup1O
+cMi3DqgIX+cTtIcuBzaH74eF0xvBVVR/A94guAoj5evRifUvBp4KPw8GXgO2AL8DDgrLc8LhLeH4
+wamOu5PrXACUhdv8j0CfKGxvYA7wJrAeeBQ4KBO3ObCI4DzIHoJf9tPj2b7AFeH6bwEuj6Vu3Vks
+IhJxmdw0JCIiMVAiEBGJOCUCEZGIUyIQEYk4JQIRkYhTIpCMZmYTLUN6njWz/OY9U4p0lW7tTyKS
+vtx9KTHeSBjesGTu3tDuxCIZREcEkrbCX8hvhh2wrTezx83s62b2ctgX+ylmdpmZ3R9Of5SZ/beZ
+rQ1fp4bL2GRm/w9YDQw0s6lm9ka4zDvCebPNbGFY9oaZ3RCWH2tmz5lZuZmtNLMTWqsrLP9f4TLW
+m9n1zdZjk5n9lwX97j9vZrnhuLHh/KXAjGbrPszMXjOzirA/+uOS+NVLpkn13XR66RXvi6DL3jpg
+BMGPmnLgIYK7Lr9JcPftZcD94fSLCTrng6Bf+97hMhqAcWF5f4JuDfoSHDG/CHwLGAu80KzuvPB9
+OXBc+PmrBF0atFbXWIK7QHsChwAbCHqNbVyPgnD63wKXhJ/XAePDzz8j7KIY+Dlwcfi5B5Cb6u2h
+V/q+dEQg6W6ru7/hQXPOBoKHeDjBDjd/n2nPInyAh7vXu3tNWL7N3V8JP58MlHjQyVkd8DjwNeDv
+wGAz+7mZnQd8Gvb8eirwOzOrIOj7vV8bdZ0O/Le7f+7unxF0oHZGs/WoCD+XA/lm1psg4fwlLH+0
+2bqUAv9pZj8CjnH3f3b4mxMJKRFIuvtXs88NzYYbiP0c2OfNPrfUjS/uvpPgqWAlBE00Cwj+f6rd
+vaDZ68Q26mlx2aHm61FPELvRShfC7v4bYCLwT+DPZnZWG8sWaZMSgUTJcuBqaGrzP7SFaV4FxpvZ
+EeHjTqcCfzGzI4Asd/898FNgjAfPf9hqZpPCZZqZjWqjrhXAt8KeNHsCFwErWwvW3auBGjM7PSy6
+uHGcmQ0G/u7u9xGcDB8ZzxciAkoEEi3XAWea2RsEzS/D9p3Ag658ZxF0c7wWWO3uTxI85akkbAJa
+GE4Dwc71UTU5AAAAaklEQVR5upmtJWia+mZrdbn76nDe1wgSzgJ3X9NOzJcDvwhPFjdv/pkMrA/j
+OQH4daxfgsi+1PuoiEjE6YhARCTilAhERCJOiUBEJOKUCEREIk6JQEQk4pQIREQiTolARCTilAhE
+RCLu/wNHh2JNS7nyhgAAAABJRU5ErkJggg==
+"
+>
+</div>
+
 </div>
 
 </div>

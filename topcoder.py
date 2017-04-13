@@ -19,7 +19,7 @@
 # references:
 # - https://rob-bell.net/2009/06/a-beginners-guide-to-big-o-notation/
 
-# In[7]:
+# In[1]:
 
 N = 1000 # input size
 C = 1 # execution time per operation 1 second
@@ -36,14 +36,16 @@ C = 1 # execution time per operation 1 second
 # - $O(2^N)$	1,014 years 
 # - $O(N!)$	10,142 years 
 
-# In[1]:
+# In[2]:
 
 class TimeIt():
     from datetime import datetime
     def __enter__(self):
         self.start = self.datetime.now()
     def __exit__(self, *args, **kwargs):
-        print('runtime: {}'.format(self.datetime.now() - self.start))
+        self.measured = self.datetime.now() - self.start
+        #print('runtime: {}'.format(self.measured))
+        times.append(self.measured.microseconds)
 
 
 # In[3]:
@@ -55,6 +57,8 @@ sample_set = numpy.random.randint(low=0, high=N, size=N, dtype='l')
 
 print(len(sample_set))
 
+times = []
+
 with TimeIt():
     print("sample_set:\n", sample_set[0:10])
 with TimeIt():
@@ -63,26 +67,75 @@ with TimeIt():
     print("sample_set:\n", sample_set[0:10])
 with TimeIt():
     print("sorted sample_set:\n", sorted(sample_set)[0:10])
+
+
+# In[4]:
+
+def plot_results(sizes, times):
+    import numpy
+    logs = numpy.log10(sizes)
+    import matplotlib.pyplot as plt
+    
+    
+    
+    sizes_times, = plt.plot(sizes, times, ".b", label='Line 2')
+    sizes_logs, = plt.plot(sizes, logs, ".y", label='Line 2')
+
+    plt.legend([sizes_times, sizes_logs], ['size vs time', 'size log(10)'])
+
+
+    #plt.plot(sizes, times, ".b", sizes, logs, ".y", label='logs')
+    plt.ylabel('sample size')
+    plt.xlabel('microseconds')
+    #plt.axis([0, 6, 0, 20]) # axis spans
+    plt.show()
+
+
+# In[5]:
+
+def time_function(my_function):
+    times = []
+    sizes = []
+    for sample_size in range(0, N, 20):  
+        sizes.append(sample_size)
+        with TimeIt():
+            x = my_function(listing = sample_set[0:sample_size + 1])
+            print (sample_size, "sample_size produced first element =", x)
+
+    print("times in microseconds\n",times)
+    print("sizes\n",sizes)
+
+    plot_results(sizes, times)
 
 
 # ## $O(1)$ 
 # 
 # executes the same amount of time regardless on input size, also noted a C.
 
-# In[18]:
+# In[6]:
 
 import time
 
 def return_first_element(listing: list):
-    time.sleep(C)
+    #time.sleep(C)
+    #print("EE")
     return listing[0]
 
-with TimeIt():
-    print (return_first_element(listing = sample_set) )
 
-for i in range(0, N, 100):  
+# In[7]:
+
+times = []
+sizes = []
+for sample_size in range(0, N, 20):  
+    sizes.append(sample_size)
     with TimeIt():
-        print (i, return_first_element(listing = sample_set[0:i+1]) )
+        x = return_first_element(listing = sample_set[0:sample_size + 1])
+        #print (sample_size, "sample_size produced first element =", x)
+    
+print("times in microseconds\n",times)
+print("sizes\n",sizes)
+
+plot_results(sizes, times)
 
 
 # 
