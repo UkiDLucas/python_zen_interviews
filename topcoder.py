@@ -9,22 +9,19 @@
 
 # # Big-O notations 
 # 
-# also known as "the run time characteristic of an algorithm".  
-# Computer scientists typically talk about the runtime relative to the size of the input.
+# Big-O notations is also known as "the run time characteristic of an algorithm",as it describes the **runtime relative to the size of the input**.
 # 
-# For input size of N items:
-# worst-case runtime, or the average-case runtime
+# For input size of N items it provides the worst-case runtime.
 # 
-# Estimated completion time for 1 second (C = 1s) operation algorithm, where input items N = 100
+# Below is the estimated completion time for 1 second (C = 1s) operation algorithm, where input items N = 100
 # 
-# - O(Log(N))	10-7 seconds
-# - O(N)	10-6 seconds
-# - O(N*Log(N))	10-5 seconds
-# - O(N2)	10-4 seconds
-# - O(N6)	3 minutes
-# - O(2N)	1014 years.
-# - O(N!)	10142 years.
-# 
+# - $O(Log(N))$	10-7 seconds 
+# - $O(N)$	10-6 seconds 
+# - $O(N*Log(N))$	10-5 seconds 
+# - $O(N^2)$	10-4 seconds, i.e. runtime is proportional to the number of items squared
+# - $O(N^6)$ 3 minutes 
+# - $O(2^N)$	1014 years 
+# - $O(N!)$	10142 years 
 
 # # Coding
 # 
