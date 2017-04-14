@@ -161,7 +161,7 @@ for sample_size in range(0, N, 20):
     sizes.append(sample_size)
     
     current_set = sample_set[0:sample_size + 1]
-    value = current_set[-1]
+    value = current_set[-1] # last value in the set
     
     with TimeIt():
         x = find_value(current_set, value)

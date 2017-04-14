@@ -12241,7 +12241,7 @@ gg==
     <span class="n">sizes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sample_size</span><span class="p">)</span>
     
     <span class="n">current_set</span> <span class="o">=</span> <span class="n">sample_set</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">sample_size</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
-    <span class="n">value</span> <span class="o">=</span> <span class="n">current_set</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">value</span> <span class="o">=</span> <span class="n">current_set</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># last value in the set</span>
     
     <span class="k">with</span> <span class="n">TimeIt</span><span class="p">():</span>
         <span class="n">x</span> <span class="o">=</span> <span class="n">find_value</span><span class="p">(</span><span class="n">current_set</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
