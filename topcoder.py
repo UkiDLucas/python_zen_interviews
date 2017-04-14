@@ -118,7 +118,6 @@ import time
 
 def return_first_element(listing: list):
     #time.sleep(C)
-    #print("EE")
     return listing[0]
 
 
@@ -134,6 +133,42 @@ for sample_size in range(0, N, 20):
     
 print("times in microseconds\n",times)
 print("sizes\n",sizes)
+
+plot_results(sizes, times)
+
+
+# # $O(N)$
+# 
+# Performance grows linearly in direct proportion to the size of the input data set
+
+# In[8]:
+
+value = sample_set[-1] # last element
+#print(sample_set)
+print(value) 
+
+def find_value(elements: list, value: str):
+    for item in elements:
+        if (item == value): 
+            return True
+    return False
+
+
+
+times = []
+sizes = []
+for sample_size in range(0, N, 20):  
+    sizes.append(sample_size)
+    
+    current_set = sample_set[0:sample_size + 1]
+    value = current_set[-1]
+    
+    with TimeIt():
+        x = find_value(current_set, value)
+        #print (sample_size, "sample_size produced first element =", x)
+    
+print("runtime in microseconds:\n",times)
+print("data set size:\n",sizes)
 
 plot_results(sizes, times)
 
