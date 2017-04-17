@@ -72,22 +72,34 @@ with TimeIt():
 # In[4]:
 
 def plot_results(sizes, times):
-    import numpy
-    logs = numpy.log10(sizes)
+    import numpy as np
+    logs = np.log10(sizes)
+    import matplotlib
     import matplotlib.pyplot as plt
     
+    sizes_times, = plt.plot(sizes, times, ".b", label='Line 2') # blue dots
+    sizes_logs, = plt.plot(sizes, logs, "y", label='Line 2') # yellow line
     
-    
-    sizes_times, = plt.plot(sizes, times, ".b", label='Line 2')
-    sizes_logs, = plt.plot(sizes, logs, ".y", label='Line 2')
+    max_y = max(times)
+    import math
+    max_x = math.sqrt(max_y)
+    quadratic_x = np.linspace(0, max_x, 10)
+    quadratic_y = []
 
-    plt.legend([sizes_times, sizes_logs], ['size vs time', 'size log(10)'])
+    for value in quadratic_x:
+        quadratic_y.append(value*value)
+        
+    sizes_quadratic, = plt.plot(quadratic_x, quadratic_y, "r", label='Line 2') # yellow line
 
+    plt.legend([sizes_times, sizes_logs, sizes_quadratic], ['size vs time', 'size log(10)', "size^2"])
 
-    #plt.plot(sizes, times, ".b", sizes, logs, ".y", label='logs')
     plt.ylabel('sample size')
     plt.xlabel('microseconds')
     #plt.axis([0, 6, 0, 20]) # axis spans
+    #plt.figure(figsize=(20,10))
+    fig = matplotlib.pyplot.gcf()
+    fig.set_size_inches(18.5, 10.5)
+    #fig.savefig('test2png.png', dpi=100)
     plt.show()
 
 
@@ -120,9 +132,6 @@ def return_first_element(listing: list):
     #time.sleep(C)
     return listing[0]
 
-
-# In[7]:
-
 times = []
 sizes = []
 for sample_size in range(0, N, 20):  
@@ -141,7 +150,7 @@ plot_results(sizes, times)
 # 
 # Performance grows linearly in direct proportion to the size of the input data set
 
-# In[8]:
+# In[7]:
 
 value = sample_set[-1] # last element
 #print(sample_set)
@@ -166,6 +175,60 @@ for sample_size in range(0, N, 20):
     with TimeIt():
         x = find_value(current_set, value)
         #print (sample_size, "sample_size produced first element =", x)
+    
+print("runtime in microseconds:\n",times)
+print("data set size:\n",sizes)
+
+plot_results(sizes, times)
+
+
+# In[8]:
+
+def find_first(array: list, value):
+    """
+    Returns ferst index of the first location where velue was found.
+    """
+    indexes = numpy.where(array == value)
+    #print(indexes) # e.g. (array([  0, 444, 599]),)
+    return indexes[0][0] # first element
+    
+#print(find_first(sample_set, 409))
+
+
+# # $O(N2)$
+# 
+# Proportional to sqare of number of input values.
+# Double iteration loop.
+
+# In[9]:
+
+def find_duplicates(listing: list):
+    #print(type(listing))
+    has_found = False
+    for index_outer in range(0, len(listing)):
+        for index_inner in range(0, len(listing)):
+            if index_outer != index_inner: # do not compare to self
+                outer = listing[index_outer]
+                inner = listing[index_inner]
+                if (outer == inner):
+                    #print(outer, index_outer, inner,index_inner)
+                    #return True # we want worse case scenario
+                    has_found = True
+    return has_found
+
+find_duplicates(sample_set)
+
+
+times = []
+sizes = []
+for sample_size in range(0, N, 20):  
+    sizes.append(sample_size)
+    
+    current_set = sample_set[0:sample_size + 1]
+    #value = current_set[-1] # last value in the set
+    
+    with TimeIt():
+        find_duplicates(current_set)
     
 print("runtime in microseconds:\n",times)
 print("data set size:\n",sizes)
